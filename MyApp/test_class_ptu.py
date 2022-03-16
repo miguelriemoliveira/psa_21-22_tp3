@@ -26,11 +26,21 @@ while True:
     ptu.goal.position.pan = 5000
     ptu.goal.position.tilt = -1500
     ptu.setData()
-    time.sleep(5)
+    while True:
+        ptu.getData()
+        if abs(ptu.goal.position.pan - ptu.current.position.pan) < 200:
+            break
+        time.sleep(0.1)
+    # time.sleep(5)
 
     ptu.goal.position.pan = -5000
     ptu.goal.position.tilt = 1500
     ptu.setData()
+    while True:
+        ptu.getData()
+        if abs(ptu.goal.position.pan - ptu.current.position.pan) < 200:
+            break
+        time.sleep(0.1)
     time.sleep(5)
 
 # -----------------------------------------
