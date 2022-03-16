@@ -7,7 +7,6 @@ class ClassCamera(ClassAbstractHardware):
 
     def __init__(self):
         super().__init__()
-        self.is_connected = False
         self.image = None
 
     def _connect(self, device):
