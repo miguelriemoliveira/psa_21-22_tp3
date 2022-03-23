@@ -19,10 +19,13 @@ class ClassMyApp:
         # create main window
         self.main_window = builder.get_object('toplevelMain', master)
         self.main_window.resizable(width=False, height=False)
+        self.main_window.bind('q', self.callbackCommandExit)
+        self.main_window.bind('g', self.callbackGamePadConnect)
 
         # Create game pad window
         self.game_pad_window = builder.get_object('toplevelGamePad')
         self.game_pad_window.resizable(width=False, height=False)
+        self.game_pad_window.bind('q', self.callbackCommandExit)
         self.game_pad_window.withdraw()
 
 
@@ -32,7 +35,7 @@ class ClassMyApp:
         self.game_pad = ClassGamePad()
         
     # Game Pad callbacks
-    def callbackGamePadConnect(self):
+    def callbackGamePadConnect(self, key=None):
         self.game_pad_window.deiconify()
         self.game_pad.connect(0)
         self.callbackGamePadTimer()
@@ -55,7 +58,7 @@ class ClassMyApp:
 
 
     # Main window callbacks
-    def callbackCommandExit(self):
+    def callbackCommandExit(self, key=None):
         print('Bye bye!')
         exit(0)
 
