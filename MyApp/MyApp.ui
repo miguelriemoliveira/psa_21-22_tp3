@@ -3,7 +3,7 @@
   <object class="tk.Toplevel" id="toplevelMain">
     <property name="height">200</property>
     <property name="title" translatable="yes">PSA TP3</property>
-    <property name="width">200</property>
+    <property name="width">400</property>
     <child>
       <object class="pygubu.builder.widgets.toplevelmenu" id="toplevelmenu1">
         <child>
@@ -20,21 +20,53 @@
               </object>
             </child>
             <child>
-              <object class="tk.Menuitem.Submenu" id="submenu2">
-                <property name="label" translatable="yes">submenu2</property>
+              <object class="tk.Menuitem.Submenu" id="submenuCamera">
+                <property name="label" translatable="yes">Camera</property>
                 <child>
-                  <object class="tk.Menuitem.Command" id="command3">
-                    <property name="label" translatable="yes">command3</property>
+                  <object class="tk.Menuitem.Command" id="commandCameraConnect">
+                    <property name="command" type="command" cbtype="simple">callbackCameraConnect</property>
+                    <property name="label" translatable="yes">Connect</property>
                   </object>
                 </child>
                 <child>
-                  <object class="tk.Menuitem.Command" id="command4">
-                    <property name="label" translatable="yes">command4</property>
+                  <object class="tk.Menuitem.Command" id="commandCameraDisconnect">
+                    <property name="command" type="command" cbtype="simple">callbackCameraDisconnect</property>
+                    <property name="label" translatable="yes">Disconnect</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="submenuGamePad">
+                <property name="label" translatable="yes">GamePad</property>
+                <child>
+                  <object class="tk.Menuitem.Command" id="commandGamPadConnect">
+                    <property name="command" type="command" cbtype="simple">callbackGamePadConnect</property>
+                    <property name="label" translatable="yes">Connect</property>
                   </object>
                 </child>
                 <child>
-                  <object class="tk.Menuitem.Command" id="command5">
-                    <property name="label" translatable="yes">command5</property>
+                  <object class="tk.Menuitem.Command" id="commandGamPadDisconnect">
+                    <property name="command" type="command" cbtype="simple">callbackGamePadDisconnect</property>
+                    <property name="label" translatable="yes">Disconnect</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="submenuPTU">
+                <property name="font">TkTextFont</property>
+                <property name="label" translatable="yes">PTU</property>
+                <child>
+                  <object class="tk.Menuitem.Command" id="commandPTUConnect">
+                    <property name="command" type="command" cbtype="simple">callbackPTUConnect</property>
+                    <property name="label" translatable="yes">Connect</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Menuitem.Command" id="commandPTUDisconnect">
+                    <property name="command" type="command" cbtype="simple">callbackPTUDisconnect</property>
+                    <property name="label" translatable="yes">Disconnect</property>
                   </object>
                 </child>
               </object>

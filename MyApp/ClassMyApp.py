@@ -16,6 +16,7 @@ class ClassMyApp:
 
         # create main window
         self.main_window = builder.get_object('toplevelMain', master)
+        self.main_window.resizable(width=False, height=False)
 
 
         builder.connect_callbacks(self)
