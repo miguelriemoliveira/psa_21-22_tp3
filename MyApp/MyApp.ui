@@ -124,4 +124,220 @@
       </object>
     </child>
   </object>
+  <object class="tk.Toplevel" id="toplevelPTU">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Labelframe" id="labelframePTUMonitor">
+        <property name="height">200</property>
+        <property name="text" translatable="yes">Monitoring</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="row">0</property>
+          <property name="rowspan">4</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="labelPanText">
+            <property name="text" translatable="yes">Pan</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="columnspan">1</property>
+              <property name="row">0</property>
+              <property name="rowspan">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="labelTiltText">
+            <property name="text" translatable="yes">Tilt</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="columnspan">1</property>
+              <property name="row">0</property>
+              <property name="rowspan">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUTiltMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUTiltMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="columnspan">1</property>
+              <property name="row">1</property>
+              <property name="rowspan">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUPanMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUPanMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="columnspan">1</property>
+              <property name="row">1</property>
+              <property name="rowspan">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label5">
+            <property name="text" translatable="yes">Current</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label2">
+            <property name="text" translatable="yes">Goal</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUPanGoalMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUPanGoalMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUTiltGoalMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUTiltGoalMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="label6">
+            <property name="text" translatable="yes">Speed</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUPanSpeedMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUPanSpeedMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="entryPTUTiltSpeedMonitor">
+            <property name="justify">center</property>
+            <property name="state">readonly</property>
+            <property name="text" translatable="yes">---</property>
+            <property name="textvariable">string:entryPTUTiltSpeedMonitorText</property>
+            <property name="width">12</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="labelframePTUPanControl">
+        <property name="height">200</property>
+        <property name="text" translatable="yes">Pan Manual Control</property>
+        <property name="width">2800</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="row">5</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property name="anchor">center</property>
+          <property type="col" id="0" name="minsize">250</property>
+        </containerlayout>
+        <child>
+          <object class="ttk.Scale" id="scalePTUPanManualControl">
+            <property name="command" type="command" cbtype="scale">callbackScalePTUPanManualControl</property>
+            <property name="from_">-8000</property>
+            <property name="orient">horizontal</property>
+            <property name="state">normal</property>
+            <property name="to">8000</property>
+            <property name="value">0</property>
+            <property name="variable">string:scalePTUPanManualControlText</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="columnspan">1</property>
+              <property name="ipadx">70</property>
+              <property name="padx">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="labelframePTUTiltManualControl">
+        <property name="height">200</property>
+        <property name="text" translatable="yes">Tilt Manual Control</property>
+        <property name="width">2800</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="row">7</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property name="anchor">center</property>
+          <property type="col" id="0" name="minsize">250</property>
+        </containerlayout>
+        <child>
+          <object class="ttk.Scale" id="scalePTUTiltManualControl">
+            <property name="command" type="command" cbtype="scale">callbackScalePTUTiltManualControl</property>
+            <property name="from_">-1500</property>
+            <property name="orient">horizontal</property>
+            <property name="state">normal</property>
+            <property name="to">4000</property>
+            <property name="value">0</property>
+            <property name="variable">string:scalePTUTiltManualControlText</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="columnspan">1</property>
+              <property name="ipadx">70</property>
+              <property name="padx">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

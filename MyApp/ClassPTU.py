@@ -23,6 +23,7 @@ class ClassPTU(ClassAbstractHardware):
         super().__init__()
         self.goal = PositionSpeed()
         self.current = PositionSpeed()
+        self.previous_msg = ''
 
     def _connect(self, device):
 
@@ -53,11 +54,22 @@ class ClassPTU(ClassAbstractHardware):
         self.serial.write(msg_to_send.encode())
         time.sleep(0.1)
 
-        data_received = self.serial.read_all().decode()
+        data_received = self.serial.read_all()
+
+        try:
+            data_received = data_received.decode()
+        except:
+            print('Could not decode msg received.')
+            return
+
         # print('data_received=\n' + str(data_received) + '\n\n')
+
+        data_received = self.previous_msg + data_received
 
         msgs = data_received.split('\n')
         # print('msgs=\n' + str(msgs) + '\n\n')
+
+        self.previous_msg = msgs[-1]
 
         for msg in msgs:
             msg = msg.strip('\r')
