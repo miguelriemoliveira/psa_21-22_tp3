@@ -19,6 +19,7 @@ while True:
     print('Axis0=' + str(game_pad.axis0) + '   Axis1=' + str(game_pad.axis1))
     time.sleep(0.01)
 
+
 # -----------------------------------------
 # Termination
 # -----------------------------------------

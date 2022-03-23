@@ -40,7 +40,7 @@
               <object class="tk.Menuitem.Submenu" id="submenuGamePad">
                 <property name="label" translatable="yes">GamePad</property>
                 <child>
-                  <object class="tk.Menuitem.Command" id="commandGamPadConnect">
+                  <object class="tk.Menuitem.Command" id="commandGamePadConnect">
                     <property name="command" type="command" cbtype="simple">callbackGamePadConnect</property>
                     <property name="label" translatable="yes">Connect</property>
                   </object>
@@ -73,6 +73,54 @@
             </child>
           </object>
         </child>
+      </object>
+    </child>
+  </object>
+  <object class="tk.Toplevel" id="toplevelGamePad">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Entry" id="entryAxis0">
+        <property name="justify">center</property>
+        <property name="state">readonly</property>
+        <property name="text" translatable="yes">---</property>
+        <property name="textvariable">string:entryAxis0TextVariable</property>
+        <property name="width">12</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="entryAxis1">
+        <property name="justify">center</property>
+        <property name="state">readonly</property>
+        <property name="text" translatable="yes">---</property>
+        <property name="textvariable">string:entryAxis1TextVariable</property>
+        <property name="width">12</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="labelAxis0">
+        <property name="text" translatable="yes">Axis0</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="labelAxis1">
+        <property name="text" translatable="yes">Axis1</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="row">0</property>
+        </layout>
       </object>
     </child>
   </object>
