@@ -1,10 +1,15 @@
 import pathlib
 import tkinter as tk
 import tkinter.ttk as ttk
+
+import cv2
 import pygubu
+from PIL import Image
+from PIL import ImageTk
 
 from ClassGamePad import ClassGamePad
 from ClassPTU import ClassPTU
+from ClassCamera import ClassCamera
 
 PROJECT_PATH = './'
 PROJECT_UI = './MyApp.ui'
@@ -36,6 +41,12 @@ class ClassMyApp:
         self.ptu_window.bind('q', self.callbackCommandExit)
         self.ptu_window.withdraw()
 
+        # Create camera window
+        self.camera_window = builder.get_object('toplevelCamera')
+        self.camera_window.resizable(width=False, height=False)
+        self.camera_window.bind('q', self.callbackCommandExit)
+        self.camera_window.withdraw()
+
         builder.connect_callbacks(self)
 
         # Instantiate hardware communication classes
@@ -43,6 +54,49 @@ class ClassMyApp:
         self.ptu = ClassPTU()
         self.ptu.goal.position.pan = 0
         self.ptu.goal.position.tilt = 0
+        self.camera = ClassCamera()
+
+
+    # PTU callbacks
+    def callbackCameraConnect(self, key=None):
+        self.camera_window.deiconify()
+        self.camera.connect(4)
+        self.callbackCameraTimer()
+
+    def callbackCameraDisconnect(self):
+        self.camera_window.withdraw()
+        self.camera.disconnect()
+
+    def callbackCameraTimer(self):
+
+        success = self.camera.getData()
+
+        import cv2
+
+        # Load the cascade
+        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        gray = cv2.cvtColor(self.camera.image, cv2.COLOR_BGR2GRAY)
+        faces = face_cascade.detectMultiScale(gray, 1.1, 4) # Detect faces
+
+        for (x, y, w, h) in faces: # Draw rectangle around the faces
+            cv2.rectangle(self.camera.image, (x, y), (x + w, y + h), (255, 255, 0), 2)
+
+        # OpenCV represents images in BGR order; however PIL
+        # represents images in RGB order, so we need to swap
+        # the channels, then convert to PIL and ImageTk format
+        image = cv2.cvtColor(self.camera.image, cv2.COLOR_BGR2RGB)
+
+        image = Image.fromarray(image)
+        image = ImageTk.PhotoImage(image)
+
+        # if the panel is not None, we need to initialize it
+        panel = self.builder.get_object('labelImagePannel')
+        panel.configure(image=image)
+        panel.image = image
+
+        # ask the window to call the same functiona again after x milisecs
+        self.camera_window.after(100, self.callbackCameraTimer)
+
 
     # PTU callbacks
     def callbackPTUConnect(self, key=None):
@@ -94,6 +148,20 @@ class ClassMyApp:
 
         self.builder.get_variable('entryAxis0TextVariable').set(str(formatted_axis0))
         self.builder.get_variable('entryAxis1TextVariable').set(str(formatted_axis1))
+
+        factor = 200
+        if abs(self.game_pad.axis0) > 0.2:
+            self.ptu.goal.position.pan = int(self.ptu.goal.position.pan + factor * self.game_pad.axis0)
+            self.ptu.goal.position.pan = min(8000, self.ptu.goal.position.pan)
+            self.ptu.goal.position.pan = max(-8000, self.ptu.goal.position.pan)
+
+        if abs(self.game_pad.axis1) > 0.2:
+            self.ptu.goal.position.tilt = int(self.ptu.goal.position.tilt + factor * self.game_pad.axis1)
+            self.ptu.goal.position.tilt = min(3000, self.ptu.goal.position.tilt)
+            self.ptu.goal.position.tilt = max(-1500, self.ptu.goal.position.tilt)
+
+        # if abs(self.game_pad.axis0) > 0.2 and self.ptu.goal.position.pan < 8000 and self.ptu.goal.position.pan > -8000:
+        #     self.ptu.goal.position.pan = int(self.ptu.goal.position.pan + factor * self.game_pad.axis0)
 
         # ask the window to call the same functiona again after x milisecs
         self.game_pad_window.after(100, self.callbackGamePadTimer)
