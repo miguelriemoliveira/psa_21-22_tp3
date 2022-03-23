@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.2">
+  <object class="tk.Toplevel" id="toplevelMain">
+    <property name="height">200</property>
+    <property name="title" translatable="yes">PSA TP3</property>
+    <property name="width">200</property>
+    <child>
+      <object class="pygubu.builder.widgets.toplevelmenu" id="toplevelmenu1">
+        <child>
+          <object class="tk.Menu" id="menu1">
+            <child>
+              <object class="tk.Menuitem.Submenu" id="submenuFile">
+                <property name="label" translatable="yes">File</property>
+                <child>
+                  <object class="tk.Menuitem.Command" id="commandExit">
+                    <property name="command" type="command" cbtype="simple">callbackCommandExit</property>
+                    <property name="label" translatable="yes">Exit</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Menuitem.Submenu" id="submenu2">
+                <property name="label" translatable="yes">submenu2</property>
+                <child>
+                  <object class="tk.Menuitem.Command" id="command3">
+                    <property name="label" translatable="yes">command3</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Menuitem.Command" id="command4">
+                    <property name="label" translatable="yes">command4</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Menuitem.Command" id="command5">
+                    <property name="label" translatable="yes">command5</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
